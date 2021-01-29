@@ -6,6 +6,7 @@ module.exports = {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
   },
+  mode: "development",
   watch: true,
   devServer: {
     contentBase: "./dist",
@@ -16,19 +17,14 @@ module.exports = {
     alias: {
       "@components": path.resolve(__dirname, "./src/components"),
     },
+    extensions: ['.js']
   },
   module: {
     rules: [
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        // loader: "babel-loader",
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
       },
     ],
   },
