@@ -17,14 +17,22 @@ module.exports = {
     alias: {
       "@components": path.resolve(__dirname, "./src/components"),
     },
-    extensions: ['.js']
+    extensions: [".js"],
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader'
+        loader: "eslint-loader",
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: "url-loader",
+          },
+        ],
       },
     ],
   },
